@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><rss xmlns:g="http://base.google.com/ns/1.0" version="2.0">
 {# 商品データ仕様: https://support.google.com/merchants/answer/7052112?hl=ja&ref_topic=6324338 #}
-{# {{dump(pagination)}} #}
 	<channel>
 	<title>{{ BaseInfo.shop_name }}</title>
 	<link>{{ app.request.getSchemeAndHttpHost }}{{ app.request.requestUri }}</link>
@@ -9,7 +8,7 @@
 		<item>
 			<g:id>{{ ProductClass.code }}</g:id>
 			<g:title>{{ ProductClass.Product.name }}</g:title>
-			<g:description>{{ ProductClass.Product.description_detail }}</g:description>
+			<g:description>{{ ProductClass.Product.description_list|striptags }}</g:description>
 			<g:link>{{ url('product_detail', {'id': ProductClass.Product.id}) }}</g:link>
 			<g:image_link>{{ app.request.getSchemeAndHttpHost }}{{ asset(ProductClass.Product.main_list_image|no_image_product, 'save_image') }}</g:image_link>
 			<g:condition>{{ ProductClass.gmc_condition }}</g:condition>
