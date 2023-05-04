@@ -48,7 +48,7 @@ class FeedController extends AbstractController
             100
         );
 
-        $content = $this->renderView('@GmcSimpleFeed/gmc_feed.twig', [
+        $content = $this->renderView('@GmcSimpleFeed42/gmc_feed.twig', [
             'pagination' => $pagination,
             'page_no' => $page_no,
             'test' => 1
