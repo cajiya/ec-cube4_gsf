@@ -11,7 +11,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Plugin\GmcSimpleFeed\Form\Extension;
+namespace Plugin\GmcSimpleFeed42\Form\Extension;
 
 use Eccube\Form\Type\Admin\ProductClassEditType;
 use Symfony\Component\Form\AbstractTypeExtension;

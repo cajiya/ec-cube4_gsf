@@ -11,7 +11,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Plugin\GmcSimpleFeed\Repository;
+namespace Plugin\GmcSimpleFeed42\Repository;
 
 use Doctrine\Persistence\ManagerRegistry as RegistryInterface;
 use Eccube\Entity\ProductClass;

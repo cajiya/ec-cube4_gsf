@@ -1,5 +1,5 @@
 {
-    "name": "ec-cube/gmcsimplefeed",
+    "name": "ec-cube/gmcsimplefeed42",
     "version": "4.2.0",
     "description": "Google Merchant Center用 RSS作成プラグイン",
     "type": "eccube-plugin",
@@ -7,6 +7,6 @@
         "ec-cube/plugin-installer": "~0.0.6"
     },
     "extra": {
-        "code": "GmcSimpleFeed"
+        "code": "GmcSimpleFeed42"
     }
 }

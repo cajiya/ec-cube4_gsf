@@ -11,7 +11,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Plugin\GmcSimpleFeed\Controller;
+namespace Plugin\GmcSimpleFeed42\Controller;
 
 use Eccube\Controller\AbstractController;
 
