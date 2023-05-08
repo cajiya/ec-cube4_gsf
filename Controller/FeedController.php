@@ -53,12 +53,10 @@ class FeedController extends AbstractController
             'page_no' => $page_no,
             'test' => 1
         ]);
-        $response = new Response(
+        return new Response(
             $content,
             Response::HTTP_OK,
-            ['content-type' => 'text/html']
-            // ['content-type' => 'application/xml']
+            ['content-type' => 'application/xml']
         );
-        return $response;
     }
 }
