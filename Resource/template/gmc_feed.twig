@@ -15,8 +15,14 @@
 			<g:availability>{% if ProductClass.stock_unlimited or ProductClass.stock > 0 %}in_stock{% else %}out_of_stock{% endif %}</g:availability>
 			<g:price>{{ ProductClass.price02_inc_tax }} JPY</g:price>
 			<g:brand>{{ ProductClass.Product.gmc_brand }}</g:brand>
-			<g:mpn>{{ ProductClass.Product.code_min }}</g:mpn>
+			{% if ProductClass.gmc_gtin %}
+			<g:gtin>{{ ProductClass.code }}</g:gtin>
+			{% else %}
+			<g:mpn>{{ ProductClass.code }}</g:mpn>
+			{% endif %}
 			<g:google_product_category>{{ ProductClass.Product.gmc_category }}</g:google_product_category>
+			<g:item_group_id>{{ ProductClass.Product.id }}</g:item_group_id>
+			{% if ProductClass.Product.gmc_hide %}<g:pause>ads</g:pause>{% endif %}
 		</item>
 	{% endfor %}
 	</channel>

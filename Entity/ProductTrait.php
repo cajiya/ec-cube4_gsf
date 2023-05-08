@@ -25,6 +25,13 @@ trait ProductTrait
     /**
      * @var integer
      *
+     * @ORM\Column(name="gmc_hide", type="boolean", nullable=true)
+     */
+    private $gmc_hide;
+
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="gmc_category", type="integer", nullable=true)
      */
     private $gmc_category;
@@ -35,6 +42,22 @@ trait ProductTrait
      * @ORM\Column(name="gmc_brand", type="string", nullable=true)
      */
     private $gmc_brand;
+
+    /**
+     * @return boolean
+     */
+    public function getGmcHide()
+    {
+        return $this->gmc_hide;
+    }
+
+    /**
+     * @param boolean $gmc_hide
+     */
+    public function setGmcHide($gmc_hide)
+    {
+        $this->gmc_hide = $gmc_hide;
+    }
 
     /**
      * @return integer

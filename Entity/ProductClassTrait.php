@@ -30,6 +30,13 @@ trait ProductClassTrait
     private $gmc_condition;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="gmc_gtin", type="string", nullable=true)
+     */
+    private $gmc_gtin;
+
+    /**
      * @return string
      */
     public function getGmcCondition()
@@ -43,5 +50,21 @@ trait ProductClassTrait
     public function setGmcCondition($gmc_condition)
     {
         $this->gmc_condition = $gmc_condition;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGmcGtin()
+    {
+        return $this->gmc_gtin;
+    }
+
+    /**
+     * @param string $gmc_gtin
+     */
+    public function setGmcGtin($gmc_gtin)
+    {
+        $this->gmc_gtin = $gmc_gtin;
     }
 }

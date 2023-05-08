@@ -16,6 +16,7 @@ namespace Plugin\GmcSimpleFeed42\Form\Extension;
 use Eccube\Form\Type\Admin\ProductClassType;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 class ProductClassTypeExtension extends AbstractTypeExtension
@@ -34,6 +35,13 @@ class ProductClassTypeExtension extends AbstractTypeExtension
                     '再生品' => 'refurbished',
                     '中古品' => 'used',
                 ],
+                'eccube_form_options' => [
+                    'auto_render' => true,
+                ],
+            ])
+            ->add('gmc_gtin', TextType::class, [
+                'label' => '[GMC用]GTIN',
+                'required'   => false,
                 'eccube_form_options' => [
                     'auto_render' => true,
                 ],

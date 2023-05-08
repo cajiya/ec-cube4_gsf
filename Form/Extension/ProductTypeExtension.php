@@ -17,6 +17,7 @@ use Eccube\Form\Type\Admin\ProductType;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 class ProductTypeExtension extends AbstractTypeExtension
@@ -29,6 +30,13 @@ class ProductTypeExtension extends AbstractTypeExtension
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('gmc_hide', CheckboxType::class, [
+                'label' => '[GMC用]非表示フラグ',
+                'required'   => false,
+                'eccube_form_options' => [
+                    'auto_render' => true,
+                ],
+            ])
             ->add('gmc_brand', TextType::class, [
                 'label' => '[GMC用]商品ブランド',
                 'required'   => false,
