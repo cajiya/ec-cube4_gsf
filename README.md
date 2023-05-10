@@ -70,11 +70,11 @@ Google Merchant Centerに商品を登録するためのRSSフィードを作成�
 | 最小省エネ性能 [min_energy_efficiency_class] | - | |
 | 最大省エネ性能 [max_energy_efficiency_class] | - | |
 | 年齢層 [age_group]*6 | - | |
-| 色 [color]*6 | - | |
-| 性別 [gender]*6 | - | |
-| 素材 [material]*7 | - | |
-| 柄 [pattern]*7 | - | |
-| サイズ [size]*8 | - | |
+| 色 [color]*6 | ○ | [GMC用]規格種別 ClassName.gmc_class_type |
+| 性別 [gender]*6 | ○ | [GMC用]規格種別 ClassName.gmc_class_type |
+| 素材 [material]*7 | ○ | [GMC用]規格種別 ClassName.gmc_class_type |
+| 柄 [pattern]*7 | ○ | [GMC用]規格種別 ClassName.gmc_class_type |
+| サイズ [size]*8 | ○ | [GMC用]規格種別 ClassName.gmc_class_type |
 | サイズタイプ [size_type] | - | |
 | サイズ表記 [size_system] | - | |
 | 商品グループ ID [item_group_id] | ○ | 商品ID Product.id |

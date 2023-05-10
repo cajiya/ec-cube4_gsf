@@ -57,6 +57,7 @@ class FeedController extends AbstractController
             $content,
             Response::HTTP_OK,
             ['content-type' => 'application/xml']
+            // ['content-type' => 'text/html']
         );
     }
 }

@@ -31,25 +31,16 @@ class ProductTypeExtension extends AbstractTypeExtension
     {
         $builder
             ->add('gmc_hide', CheckboxType::class, [
-                'label' => '[GMC用]非表示フラグ',
+                'label' => '非表示フラグ',
                 'required'   => false,
-                'eccube_form_options' => [
-                    'auto_render' => true,
-                ],
             ])
             ->add('gmc_brand', TextType::class, [
-                'label' => '[GMC用]商品ブランド',
+                'label' => '商品ブランド',
                 'required'   => false,
-                'eccube_form_options' => [
-                    'auto_render' => true,
-                ],
             ])
             ->add('gmc_category', IntegerType::class, [
-                'label' => '[GMC用]商品カテゴリ',
+                'label' => 'Google 商品カテゴリ',
                 'required'   => false,
-                'eccube_form_options' => [
-                    'auto_render' => true,
-                ],
             ]);
     }
 

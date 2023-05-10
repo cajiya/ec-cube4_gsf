@@ -1,0 +1,94 @@
+<div class="card rounded border-0 mb-4" id="gmc_config">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-8">
+                <div class="d-inline-block">
+                <span class="card-title">
+                    Google Merchant Center設定
+                </span>
+                </div>
+            </div>
+            <div class="col-4 text-right">
+                <a data-toggle="collapse" href="#standardConfig" aria-expanded="false" aria-controls="standardConfig">
+                    <i class="fa fa-angle-up fa-lg"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="collapse show ec-cardCollapse" id="standardConfig">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-3">
+                    <div class="d-inline-block">
+                        <span>{{form.gmc_hide.vars.label}}</span>
+                    </div>
+                </div>
+                <div class="col mb-2">
+                    {{ form_widget(form.gmc_hide) }}
+                    {{ form_errors(form.gmc_hide) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <div class="d-inline-block">
+                        <span>{{form.gmc_brand.vars.label}}</span>
+                    </div>
+                </div>
+                <div class="col mb-2">
+                    {{ form_widget(form.gmc_brand) }}
+                    {{ form_errors(form.gmc_brand) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <div class="d-inline-block">
+                        <span>{{form.gmc_category.vars.label}}</span>
+                    </div>
+                </div>
+                <div class="col mb-2">
+                    {{ form_widget(form.gmc_category) }}
+                    {{ form_errors(form.gmc_category) }}
+                </div>
+            </div>
+
+            {% if has_class == false %}
+            <div class="row">
+                <div class="col-3">
+                    <div class="d-inline-block">
+                        <span>{{form.class.gmc_condition.vars.label}}</span>
+                    </div>
+                </div>
+                <div class="col mb-2">
+                    {{ form_widget(form.class.gmc_condition) }}
+                    {{ form_errors(form.class.gmc_condition) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <div class="d-inline-block">
+                        <span>{{form.class.gmc_gtin.vars.label}}</span>
+                    </div>
+                </div>
+                <div class="col mb-2">
+                    {{ form_widget(form.class.gmc_gtin) }}
+                    {{ form_errors(form.class.gmc_gtin) }}
+                </div>
+            </div>
+            {% endif %}
+            
+        </div>
+      <div class="card-footer">
+        <small class="text-muted">
+        <a href="https://support.google.com/merchants/answer/7052112" target="_blank">商品データ仕様 - Google Merchant Center ヘルプ</a>｜
+        Google 商品カテゴリの一覧(xls)は<a href="https://www.google.com/basepages/producttype/taxonomy-with-ids.ja-JP.xls">こちらからダウンロード</a>
+        </small>
+      </div>
+
+
+    </div>
+</div>
+<script>
+$(function(){
+    $('.c-primaryCol').append( $('#gmc_config') );
+})
+</script>

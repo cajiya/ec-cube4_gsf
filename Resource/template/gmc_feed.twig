@@ -22,8 +22,19 @@
 			{% endif %}
 			<g:google_product_category>{{ ProductClass.Product.gmc_category }}</g:google_product_category>
 			<g:item_group_id>{{ ProductClass.Product.id }}</g:item_group_id>
+			{{ _self.class_type( ProductClass.ClassCategory1 ) }}
+			{{ _self.class_type( ProductClass.ClassCategory2 ) }}
 			{% if ProductClass.Product.gmc_hide %}<g:pause>ads</g:pause>{% endif %}
 		</item>
 	{% endfor %}
 	</channel>
 </rss>
+
+{% macro class_type( ClassCategory ) %}
+	{% if ClassCategory is not null %}
+		{% set ClassType = ClassCategory.ClassName.gmc_class_type %}
+		{% if ClassType is not null and ClassType != "--" %}
+			<g:{{ClassType}}>{{ClassCategory.name}}</g:{{ClassType}}>
+		{% endif %}
+	{% endif %}
+{% endmacro %}

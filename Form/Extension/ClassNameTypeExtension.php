@@ -13,13 +13,12 @@
 
 namespace Plugin\GmcSimpleFeed42\Form\Extension;
 
-use Eccube\Form\Type\Admin\ProductClassType;
+use Eccube\Form\Type\Admin\ClassNameType;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-class ProductClassTypeExtension extends AbstractTypeExtension
+class ClassNameTypeExtension extends AbstractTypeExtension
 {
 
     /**
@@ -28,17 +27,16 @@ class ProductClassTypeExtension extends AbstractTypeExtension
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('gmc_condition', ChoiceType::class, [
-                'label' => 'コンディション',
+            ->add('gmc_class_type', ChoiceType::class, [
+                'label' => '[GMC用]規格種別',
                 'choices'  => [
-                    '新品' => 'new',
-                    '再生品' => 'refurbished',
-                    '中古品' => 'used',
+                    '--' => 'none',
+                    '色' => 'color',
+                    '性別' => 'gender',
+                    '素材' => 'material',
+                    '柄' => 'pattern',
+                    'サイズ' => 'size',
                 ],
-            ])
-            ->add('gmc_gtin', TextType::class, [
-                'label' => 'GTIN',
-                'required'   => false,
             ]);
     }
 
@@ -47,7 +45,7 @@ class ProductClassTypeExtension extends AbstractTypeExtension
      */
     public function getExtendedType()
     {
-        return ProductClassType::class;
+        return ClassNameType::class;
     }
 
     /**
@@ -55,6 +53,6 @@ class ProductClassTypeExtension extends AbstractTypeExtension
      */
     public static function getExtendedTypes(): iterable
     {
-        return [ProductClassType::class];
+        return [ClassNameType::class];
     }
 }

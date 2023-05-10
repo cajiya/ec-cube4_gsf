@@ -1,0 +1,28 @@
+
+
+<div class="col-auto align-self-center gmc_config"><span>{{form.gmc_class_type.vars.label}}</span></div>
+<div class="col-auto gmc_config">
+    {{ form_widget(form.gmc_class_type) }}
+    {{ form_errors(form.gmc_class_type) }}
+</div>
+<script>
+$(function(){
+    $('#form1').append( $('.gmc_config') );
+})
+</script>
+
+{% for ClassName in ClassNames %}
+<div class="col-12 pt-3 gmc_config-{{ ClassName.id }}">
+<div class="col-auto align-self-center gmc_config-{{ ClassName.id }}"><span>{{form.gmc_class_type.vars.label}}</span></div>
+<div class="col-auto align-items-center gmc_config-{{ ClassName.id }}">
+    {{ form_widget(forms[ClassName.id].gmc_class_type, {'attr': {'data-origin-value': forms[ClassName.id].gmc_class_type.vars.value}}) }}
+    {{ form_errors(forms[ClassName.id].gmc_class_type) }}
+</div>
+<script>
+$(function(){
+    $('#ex-class_name-{{ ClassName.id }} .mode-edit').append( $('.gmc_config-{{ ClassName.id }}') );
+})
+</script>
+
+{% endfor %}
+
