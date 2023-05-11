@@ -1,8 +1,6 @@
 # EC-CUBE4.2用 Google Merchant Center用 RSS作成プラグイン
 
 Google Merchant Centerに商品を登録するためのRSSフィードを作成するプラグイン
-アパレル関係の商品
-
 
 ## 商品データ仕様
 
@@ -71,7 +69,7 @@ Google Merchant Centerに商品を登録するためのRSSフィードを作成�
 | 最大省エネ性能 [max_energy_efficiency_class] | - | |
 | 年齢層 [age_group]*6 | - | |
 | 色 [color]*6 | ○ | [GMC用]規格種別 ClassName.gmc_class_type |
-| 性別 [gender]*6 | ○ | [GMC用]規格種別 ClassName.gmc_class_type |
+| 性別 [gender]*6 | - | |
 | 素材 [material]*7 | ○ | [GMC用]規格種別 ClassName.gmc_class_type |
 | 柄 [pattern]*7 | ○ | [GMC用]規格種別 ClassName.gmc_class_type |
 | サイズ [size]*8 | ○ | [GMC用]規格種別 ClassName.gmc_class_type |

@@ -1,0 +1,215 @@
+{% extends '@admin/default_frame.twig' %}
+
+{% set menus = ['store', 'plugin', 'plugin_list'] %}
+
+{% block title %}設定{% endblock %}
+{% block sub_title %}GMC設定{% endblock %}
+
+{% block main %}
+<div class="c-contentsArea__cols">
+    <div class="c-contentsArea__primaryCol">
+        <div class="c-primaryCol row">
+            <div class="col-6">
+                <div class="card rounded border-0 mb-4">
+                    <div class="card-header">
+                        <div class="read">
+                            ヘルプ／機能説明
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <p>表示中のProductClass数：<span class="h2">{{pagination.totalItemCount}}</span><br>
+                        <small>※商品(Product)ではなく、商品規格(ProductClass)またはSKUの数です。</small><br>
+                        <small>※商品毎の非表示フラグの設定は、上記数値には反映されませんのでご注意ください。</small></p>
+                        <hr>
+                        <div class="alert alert-warning" role="alert">
+                        Google Merchant Centerの説明については、<a href="https://support.google.com/merchants/?hl=ja#topic=7259123" target="_blank">Google Merchant Center ヘルプ</a>をご参照ください。<br>
+                        <small>RSSフィードに関する詳しい解説、仕様は<a href="https://support.google.com/merchants/answer/7052112" target="_blank">商品データ仕様 - Google Merchant Center ヘルプ</a>をご参照ください。</small>
+                        </div>
+                        <div class="alert alert-warning" role="alert">
+                            当プラグインで生成されるRSSフィードが、どの値をEC-CUBEから参照しているか。また、Google Merchant Centerの仕様で定められた属性に、どこまで対応しているかについては、<a href="https://github.com/cajiya/ec-cube4_gsf" target="_blank">こちら[cajiya/ec-cube4_gsf - github.com]</a>をご参照ください。
+
+                        </div>
+                        <hr>
+                        <nav class="navbar navbar-expand-lg bg-secondary">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" href="#gmc_p">商品(Prodcut)</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" href="#gmc_pc">商品規格(ProdcutClass)</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" href="#gmc_cn">規格管理(ClassName)</a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <hr>
+                        <table class="table table-striped" id="gmc_p">
+                            <thead class="table-secondary">
+                                <tr><th colspan="2">商品(Prodcut)の設定項目</th></tr>
+                                <tr><th>項目名</th><th>説明</th></tr>
+                            </thead>
+                            <body>
+                                <tr>
+                                    <td>非表示フラグ</td>
+                                    <td>このフラグにチェックを入れて保存すると、対象商品の<br>
+                                    一時停止[pause]属性に[ads]が設定され、商品を一時停止にできます。<br>
+                                    <small>一時停止の期間が 14 日間を超えた場合、その商品は不承認となります。<br>
+                                    再承認されるためには、この属性を削除してください。</small></td>
+                                </tr>
+                                <tr>
+                                    <td>商品ブランド</td>
+                                    <td>消費者が一般的に認識している商品のブランド名を指定します。<br>
+                                    ブランドがない商品の場合、この項目は空白にしてください。
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Google 商品カテゴリ</td>
+                                    <td>ショップの商品向けに Google が定めた商品カテゴリです。<br>
+                                    Google 商品カテゴリの一覧(xls)は<a href="https://www.google.com/basepages/producttype/taxonomy-with-ids.ja-JP.xls">こちらからダウンロード</a><br>
+                                    <small>例：「ファッション・アクセサリー > 衣料品 > スーツ」または「1594」</small>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>コンディション*1</td>
+                                    <td>販売時の商品の状態です。<br>
+                                        <small>新品 [new]：開封していない元のパッケージのままの商品<br>
+                                        再生品 [refurbished]：専門の技術者が正常に機能するように復元した保証付きの商品<br>
+                                        中古品 [used]：過去に使用された商品
+                                        </small>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>GTIN*1</td>
+                                    <td>商品の国際取引商品番号で、以下がサポートされています。<br>
+                                    <small>・UPC（北アメリカ / GTIN-12）<br>
+                                    ・EAN（ヨーロッパ / GTIN-13）<br>
+                                    ・JAN（日本 / GTIN-13）<br>
+                                    ・ISBN（書籍）<br>
+                                    ・ITF-14（マルチパック用 / GTIN-14）</small><br>
+                                    GTIN は、それが正しいものであると確信が持てる場合のみ指定してください。</td>
+                                </tr>
+                            </body>
+                        </table>
+                        <small>*1: 商品規格が登録されていない商品の場合のみ。商品規格が登録済みの場合、商品規格の編集画面から設定可能。</small>
+                        <hr>
+                        <table class="table table-striped" id="gmc_pc">
+                            <thead class="table-secondary">
+                                <tr><th colspan="2">商品規格(ProdcutClass)</th></tr>
+                                <tr><th>項目名</th><th>説明</th></tr>
+                            </thead>
+                            <body>
+                                <tr>
+                                    <td>[GMC用]コンディション</td>
+                                    <td>販売時の商品の状態です。<br>
+                                        <small>新品 [new]：開封していない元のパッケージのままの商品<br>
+                                        再生品 [refurbished]：専門の技術者が正常に機能するように復元した保証付きの商品<br>
+                                        中古品 [used]：過去に使用された商品
+                                        </small>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>[GMC用]GTIN</td>
+                                    <td>商品の国際取引商品番号で、以下がサポートされています。<br>
+                                    <small>・UPC（北アメリカ / GTIN-12）<br>
+                                    ・EAN（ヨーロッパ / GTIN-13）<br>
+                                    ・JAN（日本 / GTIN-13）<br>
+                                    ・ISBN（書籍）<br>
+                                    ・ITF-14（マルチパック用 / GTIN-14）</small><br>
+                                    GTIN は、それが正しいものであると確信が持てる場合のみ指定してください。</td>
+                                </tr>
+                            </body>
+                        </table>
+                        <hr>
+                        <table class="table table-striped" id="gmc_cn">
+                            <thead class="table-secondary">
+                                <tr><th colspan="2">規格(ClassName)</th></tr>
+                                <tr><th>項目名</th><th>説明</th></tr>
+                            </thead>
+                            <body>
+                                <tr>
+                                    <td>[GMC用]規格種別</td>
+                                    <td>
+                                    規格をGoogle Merchant Centerの仕様で定められた属性と紐付けるための設定です。<br>
+                                        <div class="p-3">
+                                            <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>属性名</th>
+                                                    <th>説明</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>色 [color]<br>（例：黒）</td>
+                                                    <td>・数字は使用しないでください（例:「0」「2」「4」など）。<br>
+                                                    ・英数字以外の文字は使用しないでください（例:「#fff000」など）。
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>素材 [material]<br>（例：革）</td>
+                                                    <td>・1 つの商品に複数の素材が使用されている場合は、<br>素材を / で区切って2つまで指定することができます。
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>柄 [pattern]<br>（例：水玉）</td>
+                                                    <td>・商品の柄や模様を指定してください
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>サイズ [size]<br>（例：XL）</td>
+                                                    <td>・複数の寸法が含まれている場合は、1つの値にまとめてください。<br>
+                                                        例：首周り40cm/裄丈86cm/トールサイズの場合[40/86 トール]
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            </table>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </body>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <diiv class="card rounded border-0 mb-4">
+                    <div class="card-header">
+                        <div class="read">
+                        Google Merchant Center 登録用メインフィード
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p>以下のすべてのRSSフィードを、Google Merchant Centerの「商品＞フィード＞メインフィードを追加」から登録してください。</p>
+                        {% for value in range(1, (pagination.totalItemCount / 100)|round(0, 'ceil') ) %}
+                            <div class="input-group mb-2">
+                                <input type="text" class="form-control" value="{{ url('gmc_feed_no', {page_no: value}) }}" readonly="readonly">
+                                <div class="input-group-prepend" data-toggle="tooltip" data-placement="top" title="コピー完了">
+                                    <div class="input-group-text js-copy">Copy</div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </diiv>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip({
+            trigger : 'click'
+        });
+
+        $('.js-copy').on('click',function(e){
+            $(this).parents('.input-group').eq(0).find('.form-control')[0].select();
+            document.execCommand("Copy");
+        });
+        
+    })
+</script>
+{% endblock %}

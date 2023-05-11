@@ -32,7 +32,6 @@ class ClassNameTypeExtension extends AbstractTypeExtension
                 'choices'  => [
                     '--' => 'none',
                     '色' => 'color',
-                    '性別' => 'gender',
                     '素材' => 'material',
                     '柄' => 'pattern',
                     'サイズ' => 'size',

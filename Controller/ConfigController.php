@@ -21,16 +21,15 @@ use Eccube\Repository\ProductClassRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+
 use Knp\Component\Pager\PaginatorInterface;
 
-class FeedController extends AbstractController
+class ConfigController extends AbstractController
 {
     /**
-     * @Route("/gmc/feed", name="gmc_feed", methods={"GET"} )
-     * @Route("/gmc/feed/{page_no}", name="gmc_feed_no", methods={"GET"}, requirements={"id" = "\d+"})
-     * 
-     * @param String $page_no
-     * 
+     * @Route("/%eccube_admin_route%/gmc/config", name="gmc_simple_feed42_admin_config", methods={"GET"} )
+     * @Template("@GmcSimpleFeed42/admin/gmc_config.twig")
      */
     public function index(
         Request $request, 
@@ -39,25 +38,11 @@ class FeedController extends AbstractController
         ProductClassRepository $productClassRepository, 
         $page_no = null )
     {
-        if( $page_no === null ) $page_no = 1;
-        $qb = $productClassRepository->findBy(['visible'=>true],['id'=>'ASC']);
- 
-        $pagination = $paginator->paginate(
-            $qb,
-            $page_no,
-            100
-        );
 
-        $content = $this->renderView('@GmcSimpleFeed42/gmc_feed.twig', [
+        $qb = $productClassRepository->findBy(['visible'=>true],['id'=>'ASC']);
+        $pagination = $paginator->paginate($qb);
+        return [
             'pagination' => $pagination,
-            'page_no' => $page_no,
-            'test' => 1
-        ]);
-        return new Response(
-            $content,
-            Response::HTTP_OK,
-            ['content-type' => 'application/xml']
-            // ['content-type' => 'text/html']
-        );
+        ];
     }
 }
