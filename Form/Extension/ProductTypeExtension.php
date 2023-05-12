@@ -15,7 +15,6 @@ namespace Plugin\GmcSimpleFeed42\Form\Extension;
 
 use Eccube\Form\Type\Admin\ProductType;
 use Symfony\Component\Form\AbstractTypeExtension;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -38,7 +37,7 @@ class ProductTypeExtension extends AbstractTypeExtension
                 'label' => '商品ブランド',
                 'required'   => false,
             ])
-            ->add('gmc_category', IntegerType::class, [
+            ->add('gmc_category', TextType::class, [
                 'label' => 'Google 商品カテゴリ',
                 'required'   => false,
             ]);
