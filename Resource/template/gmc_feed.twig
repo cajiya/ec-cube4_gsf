@@ -16,9 +16,9 @@
 			<g:price>{{ ProductClass.price02_inc_tax }} JPY</g:price>
 			<g:brand>{{ ProductClass.Product.gmc_brand }}</g:brand>
 			{% if ProductClass.gmc_gtin %}
-			<g:gtin>{{ ProductClass.code }}</g:gtin>
+				<g:gtin>{{ ProductClass.gmc_gtin }}</g:gtin>
 			{% else %}
-			<g:mpn>{{ ProductClass.code }}</g:mpn>
+				<g:mpn>{{ ProductClass.code }}</g:mpn>
 			{% endif %}
 			<g:google_product_category>{{ ProductClass.Product.gmc_category }}</g:google_product_category>
 			<g:item_group_id>{{ ProductClass.Product.id }}</g:item_group_id>
