@@ -30,9 +30,9 @@ trait ProductTrait
     private $gmc_hide;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="gmc_category", type="integer", nullable=true)
+     * @ORM\Column(name="gmc_category", type="string", nullable=true)
      */
     private $gmc_category;
 

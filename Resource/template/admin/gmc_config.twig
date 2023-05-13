@@ -17,7 +17,7 @@
                         </div>
                     </div>
 
-                    <div class="card-body">
+                    <div class="card-body">                    
                         <p>表示中のProductClass数：<span class="h2">{{pagination.totalItemCount}}</span><br>
                         <small>※商品(Product)ではなく、商品規格(ProductClass)またはSKUの数です。</small><br>
                         <small>※商品毎の非表示フラグの設定は、上記数値には反映されませんのでご注意ください。</small></p>
@@ -45,9 +45,12 @@
                             </ul>
                         </nav>
                         <hr>
+                        <p class="h4">商品(Prodcut)の設定方法</p>
+                        <p>商品の編集画面下部に、以下の[Google Merchant Center設定]という設定エリアが追加されます。</p>
+                        <p><img src="{{ asset('GmcSimpleFeed42/assets/help_Prodcut.png', 'plugin') }}" alt="" width="100%"></p>
+
                         <table class="table table-striped" id="gmc_p">
                             <thead class="table-secondary">
-                                <tr><th colspan="2">商品(Prodcut)の設定項目</th></tr>
                                 <tr><th>項目名</th><th>説明</th></tr>
                             </thead>
                             <body>
@@ -94,9 +97,11 @@
                         </table>
                         <small>*1: 商品規格が登録されていない商品の場合のみ。商品規格が登録済みの場合、商品規格の編集画面から設定可能。</small>
                         <hr>
+                        <p class="h4">商品規格(ProdcutClass)の設定方法</p>
+                        <p>規格管理の登録フィールド、及び編集時のフォームに、以下の設定エリアが追加されます。</p>
+                        <p><img src="{{ asset('GmcSimpleFeed42/assets/help_ProdcutClass.png', 'plugin') }}" alt="" width="100%"></p>
                         <table class="table table-striped" id="gmc_pc">
                             <thead class="table-secondary">
-                                <tr><th colspan="2">商品規格(ProdcutClass)</th></tr>
                                 <tr><th>項目名</th><th>説明</th></tr>
                             </thead>
                             <body>
@@ -122,9 +127,14 @@
                             </body>
                         </table>
                         <hr>
+
+                        <p class="h4">規格(ClassName)の設定方法</p>
+                        <p>商品規格を登録している商品のみ、設定を行うことができます。
+                        商品規格の編集画面の各行に、以下の設定項目という設定エリアが追加されます。</p>
+                        <p><img src="{{ asset('GmcSimpleFeed42/assets/help_ClassName.png', 'plugin') }}" alt="" width="100%"></p>
+
                         <table class="table table-striped" id="gmc_cn">
                             <thead class="table-secondary">
-                                <tr><th colspan="2">規格(ClassName)</th></tr>
                                 <tr><th>項目名</th><th>説明</th></tr>
                             </thead>
                             <body>
@@ -183,7 +193,8 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <p>以下のすべてのRSSフィードを、Google Merchant Centerの「商品＞フィード＞メインフィードを追加」から登録してください。</p>
+                        <p>RSSフィードには、1ページに最大100個の商品規格がID順で表示されます。商品が多い場合、複数のRSSフィードが作成されます。<br>
+                        Google Merchant Centerの「商品＞フィード＞メインフィード追加」で、以下のすべてのRSSフィードを登録してください。</p>
                         {% for value in range(1, (pagination.totalItemCount / 100)|round(0, 'ceil') ) %}
                             <div class="input-group mb-2">
                                 <input type="text" class="form-control" value="{{ url('gmc_feed_no', {page_no: value}) }}" readonly="readonly">
@@ -199,6 +210,7 @@
         </div>
     </div>
 </div>
+
 <script>
     $(function () {
         $('[data-toggle="tooltip"]').tooltip({
