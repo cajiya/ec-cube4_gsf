@@ -13,7 +13,7 @@
 
 namespace Plugin\GmcSimpleFeed42\Repository;
 
-use Doctrine\Persistence\ManagerRegistry as RegistryInterface;
+use Symfony\Bridge\Doctrine\RegistryInterface;
 use Eccube\Entity\ProductClass;
 use Eccube\Repository\AbstractRepository;
 
