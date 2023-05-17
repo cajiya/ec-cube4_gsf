@@ -24,7 +24,7 @@
 			<g:item_group_id>{{ ProductClass.Product.id }}</g:item_group_id>
 			{{ _self.class_type( ProductClass.ClassCategory1 ) }}
 			{{ _self.class_type( ProductClass.ClassCategory2 ) }}
-			{% if ProductClass.Product.gmc_hide %}<g:pause>ads</g:pause>{% endif %}
+			{% if ProductClass.Product.gmc_hide or ProductClass.Product.Status.id != 1 %}<g:pause>ads</g:pause>{% endif %}
 		</item>
 	{% endfor %}
 	</channel>
