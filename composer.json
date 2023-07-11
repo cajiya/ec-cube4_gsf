@@ -4,7 +4,7 @@
     "description": "Google Merchant Center用 RSS作成プラグイン",
     "type": "eccube-plugin",
     "require": {
-        "ec-cube/plugin-installer": "~0.0.6"
+        "ec-cube/plugin-installer": "~0.0.6 || ^2.0"
     },
     "extra": {
         "code": "GmcSimpleFeed42"
